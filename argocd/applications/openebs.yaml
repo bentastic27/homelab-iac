@@ -8,14 +8,12 @@ spec:
   source:
     chart: openebs
     repoURL: https://openebs.github.io/charts
-    targetRevision: 2.12.1
+    targetRevision: 3.10.0
     helm:
       releaseName: openebs
       valuesObject:
         localprovisioner:
           enabled: true
-        jiva:
-          enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openebs
