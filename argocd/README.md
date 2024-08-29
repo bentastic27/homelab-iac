@@ -10,23 +10,10 @@ helm install \
   --set crds.enabled=true
 ```
 
-Apply the Let's Encrypt Issuer:
+Create the LE issuer and ArgoCD ingress:
 
 ```
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt-prod
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: test@example.com
-    privateKeySecretRef:
-      name: letsencrypt-prod
-    solvers:
-      - http01:
-          ingress:
-            class: nginx
+kubectl apply -f system-manifests
 ```
 
 Install ArgoCD:
@@ -39,4 +26,11 @@ helm install \
   --create-namespace \
   --set crds.install=true \
   --version 7.5.0
+```
+
+Create the initial `argocd` project and `homelab-iac-sync` app to get everything fired off:
+
+```
+kubectl apply -f projects/argocd.yaml
+kubectl apply -f applications/homelab-iac-sync.yaml
 ```
