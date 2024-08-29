@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openebs
+  namespace: argocd
+spec:
+  project: system
+  source:
+    chart: openebs
+    repoURL: https://openebs.github.io/charts
+    targetRevision: 2.12.1
+    helm:
+      releaseName: openebs
+      valuesObject:
+        localprovisioner:
+          enabled: true
+        jiva:
+          enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: openebs
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
