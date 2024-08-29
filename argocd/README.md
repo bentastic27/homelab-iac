@@ -10,12 +10,6 @@ helm install \
   --set crds.enabled=true
 ```
 
-Create the LE issuer and ArgoCD ingress:
-
-```
-kubectl apply -f system-manifests
-```
-
 Install ArgoCD:
 
 ```
@@ -26,6 +20,12 @@ helm install \
   --create-namespace \
   --set crds.install=true \
   --version 7.5.0
+```
+
+Create the LE issuer and ArgoCD ingress:
+
+```
+kubectl apply -f system-manifests
 ```
 
 Create the initial `argocd` project and `homelab-iac-sync` app to get everything fired off:
