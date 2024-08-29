@@ -10,10 +10,8 @@ spec:
     namespace: knative-operator
   source:
     repoURL: https://github.com/knative/operator.git
-    path: config/manager
+    path: config/default
     targetRevision: knative-v1.15.4
-    directory:
-      include: operator.yaml
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
