@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: manifests-sync
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: system
+  source:
+    path: argocd/system-manifests
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
