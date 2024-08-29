@@ -54,5 +54,12 @@ kubectl -n atlantis create secret generic atlantis-creds --from-file=username --
 Create an AWS key for remote state:
 
 ```
-kubectl -n atlantis create secret generic aws-creds --from-file=AWS_ACCESS_KEY_ID --from-file=AWS_SECRET_ACCESS_KEY --from-file=AWS_REGION
+cat <<EOT > credentials
+[default]
+aws_access_key_id=YOUR_ACCESS_KEY_ID
+aws_secret_access_key=YOUR_SECRET_ACCESS_KEY
+region=us-east-1
+EOT
+
+kubectl -n atlantis create secret generic aws-creds --from-file=credentials
 ```
