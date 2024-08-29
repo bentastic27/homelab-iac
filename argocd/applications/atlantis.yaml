@@ -1,13 +1,3 @@
-# kubectl create ns atlantis
-# echo gh_token_here > github_token
-# echo webhook_secret_here > github_secret
-# echo username > username
-# echo password > password
-# kubectl -n atlantis create secret generic atlantis-vcs --from-literal=github_user=bentastic27 --from-file=github_token --from-file=github_secret
-# kubectl -n atlantis create secret generic atlantis-creds --from-file=username --from-file=password
-#
-# for AWS remote state:
-# kubectl -n atlantis create secret generic aws-creds --from-file=AWS_ACCESS_KEY_ID --from-file=AWS_SECRET_ACCESS_KEY --from-file=AWS_REGION
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

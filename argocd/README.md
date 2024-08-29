@@ -1,3 +1,5 @@
+## Init ArgoCD
+
 Install cert-manager:
 
 ```
@@ -33,4 +35,24 @@ Create the initial `argocd` project and `homelab-iac-sync` app to get everything
 ```
 kubectl apply -f projects/argocd.yaml
 kubectl apply -f applications/homelab-iac-sync.yaml
+```
+
+## Init Atlantis
+
+Create `atlantis` ns and secrets. Follow [this doc](https://www.runatlantis.io/docs/configuring-webhooks.html) for the `github_secret`:
+
+```
+kubectl create ns atlantis
+echo -n gh_token_here > github_token
+echo -n webhook_secret_here > github_secret
+echo -n username > username
+echo -n password > password
+kubectl -n atlantis create secret generic atlantis-vcs --from-literal=github_user=bentastic27 --from-file=github_token --from-file=github_secret
+kubectl -n atlantis create secret generic atlantis-creds --from-file=username --from-file=password
+```
+
+Create an AWS key for remote state:
+
+```
+kubectl -n atlantis create secret generic aws-creds --from-file=AWS_ACCESS_KEY_ID --from-file=AWS_SECRET_ACCESS_KEY --from-file=AWS_REGION
 ```
