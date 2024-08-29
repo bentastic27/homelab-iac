@@ -46,18 +46,6 @@ module "records" {
       records        = ["beansnet.net."]
     },
     {
-      name           = "smbshare"
-      type           = "CNAME"
-      ttl            = 300
-      records        = ["lab.beansnet.net."]
-    },
-    {
-      name           = "timemachine"
-      type           = "CNAME"
-      ttl            = 300
-      records        = ["lab.beansnet.net."]
-    },
-    {
       name           = "lab"
       type           = "A"
       ttl            = 300
