@@ -1,0 +1,52 @@
+# kubectl create ns atlantis
+# echo gh_token_here > github_token
+# echo webhook_secret_here > github_secret
+# echo username > username
+# echo password > password
+# kubectl -n atlantis create secret generic atlantis-vcs --from-literal=github_user=bentastic27 --from-file=github_token --from-file=github_secret
+# kubectl -n atlantis create secret generic atlantis-creds --from-file=username --from-file=password
+#
+# for AWS remote state:
+# kubectl -n atlantis create secret generic aws-creds --from-file=AWS_ACCESS_KEY_ID --from-file=AWS_SECRET_ACCESS_KEY --from-file=AWS_REGION
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: atlantis
+  namespace: argocd
+spec:
+  project: atlantis
+  source:
+    chart: atlantis
+    repoURL: https://runatlantis.github.io/helm-charts
+    targetRevision: 5.5.0
+    helm:
+      valuesObject:
+        replicaCount: 1
+        github:
+          user: bentastic27
+        orgAllowlist: github.com/bentastic27/*
+        vcsSecretName: atlantis-vcs
+        basicAuthSecretName: atlantis-creds
+        awsSecretName: aws-creds
+        service:
+          type: ClusterIP
+        volumeClaim:
+          storageClassName: openebs-hostpath
+        ingress:
+          path: /
+          ingressClassName: nginx
+          host: atlantis.beansnet.net
+          tls:
+          - hosts:
+            - atlantis.beansnet.net
+            secretName: atlantis-cert-secret
+          annotations:
+            cert-manager.io/cluster-issuer: letsencrypt-prod
+            kubernetes.io/tls-acme: "true"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: atlantis
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
