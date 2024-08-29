@@ -7,6 +7,7 @@ spec:
   description: The place to manage ArgoCD things
   sourceRepos:
   - https://github.com/bentastic27/homelab-iac.git
+  - https://argoproj.github.io/argo-helm
   destinations:
   - namespace: argocd
     server: https://kubernetes.default.svc
