@@ -12,6 +12,29 @@ spec:
     repoURL: https://github.com/bentastic27/homelab-iac.git
     path: argocd/manifests/knative
     targetRevision: HEAD
+    directory:
+      include: operator.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knative-serving
+  namespace: argocd
+spec:
+  project: knative
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: knative-serving
+  source:
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    path: argocd/manifests/knative
+    targetRevision: HEAD
+    directory:
+      include: serving.yaml
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
