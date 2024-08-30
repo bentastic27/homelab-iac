@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knative-operator
+  namespace: argocd
+spec:
+  project: knative
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: knative-operator
+  source:
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    path: argocd/manifests/knative
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated: {}
