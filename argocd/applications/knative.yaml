@@ -38,4 +38,25 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-#    automated: {}
+    # automated: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: knative-eventing
+  namespace: argocd
+spec:
+  project: knative
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: knative-eventing
+  source:
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    path: argocd/manifests/knative
+    targetRevision: HEAD
+    directory:
+      include: eventing.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    # automated: {}
