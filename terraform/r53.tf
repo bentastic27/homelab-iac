@@ -57,5 +57,17 @@ module "records" {
       ttl            = 300
       records        = ["192.168.1.2"]
     },
+    {
+      name           = "knative"
+      type           = "CNAME"
+      ttl            = 300
+      records        = ["lab.beansnet.net."]
+    },
+    {
+      name           = "*.knative"
+      type           = "CNAME"
+      ttl            = 300
+      records        = ["knative.beansnet.net."]
+    },
   ]
 }
