@@ -13,6 +13,44 @@ spec:
       ingress-class: "kourier.ingress.networking.knative.dev"
     domain:
       knative.beansnet.net: ""
-      dynamicdns.beansnet.net: |
+      dynamicdns.knative.beansnet.net: |
         selector:
           app: dynamicdns
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: knative-serving
+  namespace: knative-serving
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns-prod
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: knative.beansnet.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kourier-internal
+            port:
+              name: http2
+  - host: "*.knative.beansnet.net"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kourier-internal
+            port:
+              name: http2
+  tls:
+  - hosts:
+    - knative.beansnet.net
+    - "*.knative.beansnet.net"
+    secretName: knative-cert-secret
