@@ -22,7 +22,8 @@ spec:
   ignoreDifferences:
   - group: rbac.authorization.k8s.io/
     kind: ClusterRole
-    jsonPointers: /rules
+    jsonPointers:
+    - /rules
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
