@@ -44,7 +44,7 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    # automated: {}
+    automated: {}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -65,4 +65,4 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    # automated: {}
+    automated: {}
