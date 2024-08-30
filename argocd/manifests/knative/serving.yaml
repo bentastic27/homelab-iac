@@ -11,3 +11,8 @@ spec:
   config:
     network:
       ingress-class: "kourier.ingress.networking.knative.dev"
+    domain:
+      knative.beansnet.net: ""
+      dynamicdns.beansnet.net: |
+        selector:
+          app: dynamicdns
