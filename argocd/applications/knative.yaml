@@ -10,10 +10,10 @@ spec:
     namespace: knative-operator
   source:
     repoURL: https://github.com/knative/operator
-    path: config/charts/knative-operator
+    path: config/default
     targetRevision: knative-v1.15.4
-    helm:
-      releaseName: knative-operator
+    kustomize: {}
+
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
