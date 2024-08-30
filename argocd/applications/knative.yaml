@@ -9,9 +9,11 @@ spec:
     server: https://kubernetes.default.svc
     namespace: knative-operator
   source:
-    repoURL: https://github.com/knative/operator.git
-    path: config/default
+    repoURL: https://github.com/knative/operator
+    path: config/charts/knative-operator
     targetRevision: knative-v1.15.4
+    helm:
+      releaseName: knative-operator
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
