@@ -49,7 +49,8 @@ spec:
       valuesObject:
         defaults:
           service:
-            loadBalancerIP: "192.168.1.10"
+            annotations:
+              metallb.universe.tf/address-pool: host-ip
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
