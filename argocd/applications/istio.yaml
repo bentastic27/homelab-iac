@@ -49,8 +49,7 @@ spec:
       valuesObject:
         defaults:
           service:
-            annotations:
-              metallb.universe.tf/address-pool: host-ip
+            type: NodePort
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
