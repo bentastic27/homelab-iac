@@ -61,10 +61,7 @@ spec:
   gateways:
   - argocd-gateway
   http:
-  - match:
-    - uri:
-        prefix: /
-    route:
+  - route:
     - destination:
         host: argocd-server
         port:
