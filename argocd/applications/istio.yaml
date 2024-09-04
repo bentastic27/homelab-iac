@@ -31,7 +31,7 @@ spec:
     helm:
       valuesObject:
         defaults:
-          reqources:
+          resources:
             requests:
               cpu: 100m
   destination:
