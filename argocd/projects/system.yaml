@@ -15,5 +15,4 @@ spec:
   - https://github.com/bentastic27/homelab-iac.git
   - https://openebs.github.io/charts
   - https://charts.jetstack.io
-  - https://metallb.github.io/metallb
   - https://istio-release.storage.googleapis.com/charts
