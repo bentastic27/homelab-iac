@@ -27,6 +27,8 @@ spec:
       protocol: HTTP
     hosts:
     - "argocd.beansnet.net"
+    tls:
+     httpsRedirect: true
   - port:
       number: 443
       name: https

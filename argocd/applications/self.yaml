@@ -11,6 +11,10 @@ spec:
     targetRevision: 7.5.0
     helm:
       releaseName: argocd
+      valuesObject:
+        configs:
+          params:
+            server.insecure: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
