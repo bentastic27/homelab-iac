@@ -16,6 +16,7 @@ spec:
       dynamicdns.knative.beansnet.net: |
         selector:
           app: dynamicdns
+  high-availability: 1
   workloads:
   - name: controller
     resources:
@@ -32,9 +33,19 @@ spec:
     - container: autoscaler
       requests:
         cpu: "10m"
+  - name: autoscaler-hpa
+    resources:
+    - container: autoscaler-hpa
+      requests:
+        cpu: "10m"
   - name: activator
     resources:
     - container: activator
+      requests:
+        cpu: "10m"
+  - name: net-kourier-controller
+    resources:
+    - container: controller
       requests:
         cpu: "10m"
 ---
