@@ -59,7 +59,7 @@ metadata:
   namespace: argocd
 spec:
   hosts:
-  - "*"
+  - "argocd.beansnet.net"
   gateways:
   - argocd-gateway
   http:
