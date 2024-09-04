@@ -16,6 +16,23 @@ spec:
       dynamicdns.knative.beansnet.net: |
         selector:
           app: dynamicdns
+  workloads:
+  - name: controller
+    resources:
+    - container: controller
+      requests: {}
+  - name: webhook
+    resources:
+    - container: webhook
+      requests: {}
+  - name: autoscaler
+    resources:
+    - container: autoscaler
+      requests: {}
+  - name: activator
+    resources:
+    - container: activator
+      requests: {}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
