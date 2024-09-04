@@ -31,9 +31,11 @@ spec:
     helm:
       valuesObject:
         defaults:
-          resources:
-            requests:
-              cpu: 100m
+          pilot:
+            resources:
+              requests:
+                cpu: 100m
+                memory: 512m
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
