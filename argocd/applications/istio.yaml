@@ -44,8 +44,8 @@ spec:
   ignoreDifferences:
   - group: admissionregistration.k8s.io
     kind: ValidatingWebhookConfiguration
-    jsonPointers:
-    - /webhooks/*/failurePolicy
+    jqPathExpressions:
+    - .webhooks[].failurePolicy
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
