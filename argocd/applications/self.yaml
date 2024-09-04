@@ -18,6 +18,6 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
-    managedNamespaceMetadata:
-      labels:
-        istio-injection: enabled
+    # managedNamespaceMetadata:
+    #   labels:
+    #     istio-injection: enabled
