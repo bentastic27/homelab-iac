@@ -67,6 +67,7 @@ spec:
       valuesObject:
         defaults:
           service:
+            externalTrafficPolicy: Local
             type: NodePort
   destination:
     server: "https://kubernetes.default.svc"
