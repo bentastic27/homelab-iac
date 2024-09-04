@@ -5,9 +5,9 @@ metadata:
   namespace: istio-system
 spec:
   secretName: argocd-cert
-  commonName: argocd.beansnet.net.com
+  commonName: argocd.beansnet.net
   dnsNames:
-  - argocd.beansnet.net.com
+  - argocd.beansnet.net
   issuerRef:
     name: letsencrypt-dns-prod
     kind: ClusterIssuer
