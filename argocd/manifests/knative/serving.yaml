@@ -20,19 +20,23 @@ spec:
   - name: controller
     resources:
     - container: controller
-      requests: {}
+      requests:
+        cpu: ""
   - name: webhook
     resources:
     - container: webhook
-      requests: {}
+      requests:
+        cpu: ""
   - name: autoscaler
     resources:
     - container: autoscaler
-      requests: {}
+      requests:
+        cpu: ""
   - name: activator
     resources:
     - container: activator
-      requests: {}
+      requests:
+        cpu: ""
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
