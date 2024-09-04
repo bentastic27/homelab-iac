@@ -16,7 +16,8 @@ spec:
       dynamicdns.knative.beansnet.net: |
         selector:
           app: dynamicdns
-  high-availability: 1
+  high-availability:
+    replicas: 1
   workloads:
   - name: controller
     resources:
