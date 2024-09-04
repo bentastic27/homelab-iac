@@ -75,10 +75,9 @@ metadata:
   name: gh-webhook
   namespace: argocd
 spec:
-  targetRef:
-    kind: Gateway
-    group: gateway.networking.k8s.io
-    name: argocd-gateway
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server
   action: ALLOW
   rules:
   - from:
