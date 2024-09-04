@@ -6,7 +6,7 @@ metadata:
 spec:
   project: system
   source:
-    chart: openebs
+    chart: metallb
     repoURL: https://metallb.github.io/metallb
     targetRevision: 0.14.8
   destination:
