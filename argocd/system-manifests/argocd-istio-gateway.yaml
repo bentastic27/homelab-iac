@@ -93,5 +93,5 @@ spec:
         - /api/webhook*
   - to:
     - operation:
-        notPaths:
-        - /api/webhook*
+        paths:
+        - /*
