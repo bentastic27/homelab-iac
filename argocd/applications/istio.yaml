@@ -16,9 +16,6 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
-    managedNamespaceMetadata:
-      labels:
-        istio-injection: enabled
   ignoreDifferences:
   - group: admissionregistration.k8s.io
     kind: ValidatingWebhookConfiguration
