@@ -28,7 +28,7 @@ spec:
     hosts:
     - "argocd.beansnet.net"
   - port:
-      number: 30443
+      number: 443
       name: https
       protocol: HTTPS
     hosts:
