@@ -90,8 +90,9 @@ spec:
     to:
     - operation:
         paths:
-        - /api/webhook*
+        - /api/webhook
   - to:
     - operation:
         paths:
-        - "*"
+        - "/{**}"
+    from: []
