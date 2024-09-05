@@ -18,12 +18,12 @@ spec:
     syncOptions:
     - CreateNamespace=true
     - RespectIgnoreDifferences=true
-    automated: {}
   ignoreDifferences:
   - group: rbac.authorization.k8s.io
     kind: ClusterRole
     jsonPointers:
     - /rules
+#    automated: {}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -44,7 +44,7 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    automated: {}
+    # automated: {}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -65,4 +65,4 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    automated: {}
+    # automated: {}
