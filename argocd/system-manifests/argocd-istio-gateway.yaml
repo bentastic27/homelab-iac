@@ -92,7 +92,5 @@ spec:
         paths:
         - /api/webhook
   - to:
-    - operation:
-        notPaths:
-        - /api/webhook
+    - {}
 
