@@ -38,6 +38,9 @@ spec:
       valuesObject:
         profile: ambient
         defaults:
+          meshConfig:
+            gatewayTopology:
+              numTrustedProxies: 2
           pilot:
             resources:
               requests:
