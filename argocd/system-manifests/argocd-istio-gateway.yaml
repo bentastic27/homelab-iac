@@ -91,6 +91,5 @@ spec:
     - operation:
         paths:
         - /api/webhook
-  - to:
-    - {}
+  - {}
 
