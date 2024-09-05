@@ -4,55 +4,13 @@ metadata:
   name: knative-serving
   namespace: knative-serving
 spec:
-  ingress:
-    kourier:
-      enabled: true
-      service-type: ClusterIP
   config:
-    network:
-      ingress-class: "kourier.ingress.networking.knative.dev"
+    istio:
+      local-gateways: |
+        - name: knative-local-gateway
+          namespace: knative-serving
+          service: knative-local-gateway.istio-system.svc.cluster.local
     domain:
       knative.beansnet.net: ""
-      dynamicdns.knative.beansnet.net: |
-        selector:
-          app: dynamicdns
   high-availability:
     replicas: 1
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: knative-serving
-  namespace: knative-serving
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-dns-prod
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: knative.beansnet.net
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kourier-internal
-            port:
-              name: http2
-  - host: "*.knative.beansnet.net"
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kourier-internal
-            port:
-              name: http2
-  tls:
-  - hosts:
-    - knative.beansnet.net
-    - "*.knative.beansnet.net"
-    secretName: knative-cert-secret
