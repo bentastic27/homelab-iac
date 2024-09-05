@@ -15,7 +15,6 @@ spec:
             number: 443
             name: https
             protocol: HTTPS
-            target_port: 8443
           hosts:
           - knative.beansnet.net
           - "*.knative.beansnet.net"
