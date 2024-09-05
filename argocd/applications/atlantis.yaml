@@ -43,3 +43,19 @@ spec:
     managedNamespaceMetadata:
       labels:
         istio.io/dataplane-mode: ambient
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: atlantis-manifests
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: atlantis
+  source:
+    path: argocd/manifests/atlantis
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

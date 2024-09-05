@@ -13,3 +13,4 @@ spec:
     kind: '*'
   sourceRepos:
   - https://runatlantis.github.io/helm-charts
+  - https://github.com/bentastic27/homelab-iac.git
