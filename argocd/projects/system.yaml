@@ -16,3 +16,4 @@ spec:
   - https://openebs.github.io/charts
   - https://charts.jetstack.io
   - https://istio-release.storage.googleapis.com/charts
+  - https://github.com/bentastic27/cpu-requests-remover-webhook.git
