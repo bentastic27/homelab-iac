@@ -41,11 +41,6 @@ spec:
           meshConfig:
             gatewayTopology:
               numTrustedProxies: 2
-          pilot:
-            resources:
-              requests:
-                cpu: 100m
-                memory: 512m
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
@@ -73,10 +68,6 @@ spec:
     helm:
       valuesObject:
         defaults:
-          resources:
-            requests:
-              cpu: 100m
-              memory: 128m
           service:
             externalTrafficPolicy: Local
             type: NodePort

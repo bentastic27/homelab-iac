@@ -18,37 +18,6 @@ spec:
           app: dynamicdns
   high-availability:
     replicas: 1
-  workloads:
-  - name: controller
-    resources:
-    - container: controller
-      requests:
-        cpu: "10m"
-  - name: webhook
-    resources:
-    - container: webhook
-      requests:
-        cpu: "10m"
-  - name: autoscaler
-    resources:
-    - container: autoscaler
-      requests:
-        cpu: "10m"
-  - name: autoscaler-hpa
-    resources:
-    - container: autoscaler-hpa
-      requests:
-        cpu: "10m"
-  - name: activator
-    resources:
-    - container: activator
-      requests:
-        cpu: "10m"
-  - name: net-kourier-controller
-    resources:
-    - container: controller
-      requests:
-        cpu: "10m"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
