@@ -1,5 +1,7 @@
 ## Init ArgoCD
 
+TODO: ADD ISTIO DOCS
+
 Init cert-manager dns secret:
 
 ```
