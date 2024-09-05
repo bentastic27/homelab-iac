@@ -33,9 +33,9 @@ spec:
           hosts:
           - knative.beansnet.net
           - "*.knative.beansnet.net"
-        tls:
-          mode: SIMPLE
-          credentialName: knative-serving-cert
+          tls:
+            mode: SIMPLE
+            credentialName: knative-serving-cert
     domain:
       knative.beansnet.net: ""
   high-availability:
