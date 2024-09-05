@@ -4,12 +4,21 @@ metadata:
   name: knative-serving
   namespace: knative-serving
 spec:
-  config:
+  ingress:
     istio:
-      local-gateways: |
-        - name: knative-local-gateway
-          namespace: knative-serving
-          service: knative-local-gateway.istio-system.svc.cluster.local
+      enabled: true
+      knative-ingress-gateway:
+        selector:
+          istio: ingress
+        servers:
+        - port:
+            number: 443
+            name: https
+            protocol: HTTPS
+            target_port: 8443
+          hosts:
+          - knative.beansnet.net
+          - "*.knative.beansnet.net"
     domain:
       knative.beansnet.net: ""
   high-availability:
