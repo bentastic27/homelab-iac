@@ -75,9 +75,10 @@ metadata:
   name: gh-webhook
   namespace: argocd
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: argocd-server
+  targetRef:
+    kind: Gateway
+    group: gateway.networking.k8s.io
+    name: argocd-gateway
   action: ALLOW
   rules:
   - from:
@@ -91,11 +92,4 @@ spec:
     - operation:
         paths:
         - /api/webhook
-  - from:
-    - source:
-        principals:
-        - cluster.local/ns/istio-system/sa/istio-ingress
-    to:
-    - operation:
-        paths:
-        - /{**}
+  - []
