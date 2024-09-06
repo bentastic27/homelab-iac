@@ -1,16 +1,40 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: proxy-to-istio-cert
+  namespace: istio-system
+spec:
+  secretName: proxy-to-istio-cert
+  commonName: beansnet.net
+  dnsNames:
+  - beansnet.net
+  - "*.beansnet.net"
+  issuerRef:
+    name: letsencrypt-dns-prod
+    kind: ClusterIssuer
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: proxy-to-istio
   namespace: istio-system
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
   - host: "*.beansnet.net"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingress
+            port:
+              name: https
+  - host: "beansnet.net"
     http:
       paths:
       - path: /
@@ -25,4 +49,3 @@ spec:
     - "*.beansnet.net"
     - "beansnet.net"
     secretName: proxy-to-istio-cert
-
