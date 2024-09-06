@@ -22,9 +22,9 @@ spec:
     domain:
       knative.beansnet.net: |
         external-gateways: |
-        - name: knative-ingress-gateway
-          namespace: knative-serving
-          service: istio-ingress.istio-system.svc.cluster.local
+          - name: knative-ingress-gateway
+            namespace: knative-serving
+            service: istio-ingress.istio-system.svc.cluster.local
     network:
       external-domain-tls: Enabled
       http-protocol: Redirected
