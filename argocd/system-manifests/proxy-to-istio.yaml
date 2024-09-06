@@ -9,6 +9,7 @@ spec:
   dnsNames:
   - beansnet.net
   - "*.beansnet.net"
+  - "*.knative.beansnet.net"
   issuerRef:
     name: letsencrypt-dns-prod
     kind: ClusterIssuer
@@ -44,8 +45,19 @@ spec:
             name: istio-ingress
             port:
               name: https
+  - host: "*.knative.beansnet.net"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: istio-ingress
+            port:
+              name: https
   tls:
   - hosts:
+    - "*.knative.beansnet.net"
     - "*.beansnet.net"
     - "beansnet.net"
     secretName: proxy-to-istio-cert
