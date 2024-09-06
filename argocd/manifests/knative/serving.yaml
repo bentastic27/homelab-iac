@@ -19,6 +19,11 @@ spec:
           - knative.beansnet.net
           - "*.knative.beansnet.net"
   config:
+    istio:
+      external-gateways: |
+        - name: knative-ingress-gateway
+          namespace: knative-serving
+          service: istio-ingress.istio-system.svc.cluster.local
     domain:
       knative.beansnet.net: |
         external-gateways: |
