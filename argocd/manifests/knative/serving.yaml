@@ -38,14 +38,17 @@ spec:
             credentialName: knative-serving-cert
   config:
     domain:
-      knative.beansnet.net: ""
+      knative.beansnet.net: |
+        - name: knative-ingress-gateway
+          namespace: knative-serving
+          service: istio-ingress.istio-system.svc.cluster.local
     network:
       external-domain-tls: Enabled
       http-protocol: Redirected
       namespace-wildcard-cert-selector: |-
         matchExpressions:
-        - key: "networking.knative.dev/disableWildcardCert"
-          operator: "NotIn"
+        - key: "networking.knative.dev/wildcardCert"
+          operator: "In"
           values: ["true"]
     certmanager:
       issuerRef: |
