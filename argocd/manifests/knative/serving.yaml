@@ -38,6 +38,7 @@ spec:
             credentialName: knative-serving-cert
   config:
     domain:
-      knative.beansnet.net: ""
+      "knative.beansnet.net": ""
+      "*.knative.beansnet.net": ""
   high-availability:
     replicas: 1
