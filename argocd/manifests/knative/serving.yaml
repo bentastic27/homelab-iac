@@ -38,6 +38,18 @@ spec:
             credentialName: knative-serving-cert
   config:
     domain:
-      "knative.beansnet.net": ""
+      knative.beansnet.net: ""
+    network:
+      external-domain-tls: Enabled
+      http-protocol: Redirected
+      namespace-wildcard-cert-selector: |-
+        matchExpressions:
+        - key: "networking.knative.dev/disableWildcardCert"
+          operator: "NotIn"
+          values: ["true"]
+    certmanager:
+      issuerRef: |
+        kind: ClusterIssuer
+        name: letsencrypt-dns-prod
   high-availability:
     replicas: 1
