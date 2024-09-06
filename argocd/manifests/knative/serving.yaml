@@ -1,18 +1,3 @@
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: knative-serving-cert
-  namespace: istio-system
-spec:
-  secretName: knative-serving-cert
-  commonName: knative.beansnet.net
-  dnsNames:
-  - knative.beansnet.net
-  - "*.knative.beansnet.net"
-  issuerRef:
-    name: letsencrypt-dns-prod
-    kind: ClusterIssuer
----
 apiVersion: operator.knative.dev/v1beta1
 kind: KnativeServing
 metadata:
@@ -27,22 +12,15 @@ spec:
           istio: ingress
         servers:
         - port:
-            number: 443
-            name: https
-            protocol: HTTPS
+            number: 80
+            name: http
+            protocol: HTTP
           hosts:
           - knative.beansnet.net
           - "*.knative.beansnet.net"
-          tls:
-            mode: SIMPLE
-            credentialName: knative-serving-cert
   config:
     domain:
-      knative.beansnet.net: |
-        external-gateways:
-        - name: knative-ingress-gateway
-          namespace: knative-serving
-          service: istio-ingress.istio-system.svc.cluster.local""
+      knative.beansnet.net: ""
     network:
       external-domain-tls: Enabled
       http-protocol: Redirected
