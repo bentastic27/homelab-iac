@@ -38,10 +38,7 @@ spec:
             credentialName: knative-serving-cert
   config:
     domain:
-      knative.beansnet.net: |
-        - name: knative-ingress-gateway
-          namespace: knative-serving
-          service: istio-ingress.istio-system.svc.cluster.local
+      knative.beansnet.net: ""
     network:
       external-domain-tls: Enabled
       http-protocol: Redirected
