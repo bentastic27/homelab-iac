@@ -70,7 +70,8 @@ spec:
         defaults:
           service:
             externalTrafficPolicy: Local
-            type: NodePort
+            annotations:
+              metallb.universe.tf/address-pool: host-ip
             ports:
             - name: status-port
               port: 15021
