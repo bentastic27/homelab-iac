@@ -1,0 +1,48 @@
+# kubectl create ns ddns-route53
+# kubectl create secret generic -n ddns-route53 aws-creds --from-literal password=$(openssl rand -base64 32)
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddns-route53
+  namespace: ddns-route53
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ddns-route53
+  template:
+    metadata:
+      labels:
+        app: ddns-route53
+    spec:
+      containers:
+      - name: ddns-route53
+        image: crazymax/ddns-route53:2.9.0
+        env:
+        - name: TZ
+          value: America/Detroit
+        - name: SCHEDULE
+          value: "*/30 * * * *"
+        - name: LOG_LEVEL
+          value: "info"
+        - name: LOG_JSON
+          value: "false"
+        - name: DDNSR53_ROUTE53_HOSTEDZONEID
+          value: "Z0466241UWHPLQN701UT"
+        - name: DDNSR53_ROUTE53_RECORDSSET_0_NAME
+          value: "beansnet.net"
+        - name: DDNSR53_ROUTE53_RECORDSSET_0_TYPE
+          value: "A"
+        - name: DDNSR53_ROUTE53_RECORDSSET_0_TTL
+          value: "300"
+        - name: DDNSR53_CREDENTIALS_ACCESSKEYID
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: aws-access-key
+        - name: DDNSR53_CREDENTIALS_SECRETACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-creds
+              key: aws-secret-key

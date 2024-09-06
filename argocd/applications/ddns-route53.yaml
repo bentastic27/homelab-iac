@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ddns-route53
+  namespace: argocd
+spec:
+  project: system
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ddns-route53
+  source:
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    path: argocd/manifests/ddns-route53
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
