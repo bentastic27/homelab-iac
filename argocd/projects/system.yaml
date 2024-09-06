@@ -17,3 +17,4 @@ spec:
   - https://charts.jetstack.io
   - https://istio-release.storage.googleapis.com/charts
   - https://github.com/bentastic27/cpu-requests-remover-webhook.git
+  - https://metallb.github.io/metallb
