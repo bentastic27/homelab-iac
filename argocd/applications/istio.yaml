@@ -38,9 +38,6 @@ spec:
       valuesObject:
         profile: ambient
         defaults:
-          defaultConfig:
-            proxyMetadata:
-              ISTIO_META_DNS_CAPTURE: false # https://github.com/istio/istio/issues/52858
           meshConfig:
             gatewayTopology:
               numTrustedProxies: 2
@@ -127,6 +124,12 @@ spec:
     chart: ztunnel
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.23.0
+    valuesObject:
+      defaults:
+        meshConfig:
+          defaultConfig:
+            proxyMetadata:
+              ISTIO_META_DNS_CAPTURE: false # https://github.com/istio/istio/issues/52858
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
