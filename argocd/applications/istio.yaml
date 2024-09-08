@@ -38,6 +38,9 @@ spec:
       valuesObject:
         profile: ambient
         defaults:
+          defaultConfig:
+            proxyMetadata:
+              ISTIO_META_DNS_CAPTURE: false # https://github.com/istio/istio/issues/52858
           meshConfig:
             gatewayTopology:
               numTrustedProxies: 2
