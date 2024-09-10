@@ -23,7 +23,7 @@ spec:
           istio: ingress
         servers:
         - hosts:
-          - "*knative*.svc.cluster.local"
+          - "*"
           port:
             name: http
             number: 8081
