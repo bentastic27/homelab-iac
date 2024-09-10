@@ -28,9 +28,6 @@ spec:
         - name: knative-local-gateway
           namespace: knative-serving
           service: istio-ingress.istio-system.svc.cluster.local
-          labelSelector:
-            matchLabels:
-              istio: ingress
     domain:
       knative.beansnet.net: |
         external-gateways: |
