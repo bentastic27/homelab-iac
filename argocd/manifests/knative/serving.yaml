@@ -21,8 +21,9 @@ spec:
       knative-local-gateway:
         selector:
           istio: ingress
-        hosts:
-        - "*knative*.svc.cluster.local"
+        servers:
+          hosts:
+          - "*knative*.svc.cluster.local"
   config:
     istio:
       external-gateways: |
