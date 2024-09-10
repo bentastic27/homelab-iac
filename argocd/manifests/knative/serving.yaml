@@ -24,10 +24,6 @@ spec:
         - name: knative-ingress-gateway
           namespace: knative-serving
           service: istio-ingress.istio-system.svc.cluster.local
-      local-gateways: |
-        - name: knative-local-gateway
-          namespace: knative-serving
-          service: istio-ingress.istio-system.svc.cluster.local
     domain:
       knative.beansnet.net: |
         external-gateways: |
