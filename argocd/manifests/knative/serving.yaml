@@ -18,6 +18,9 @@ spec:
           hosts:
           - knative.beansnet.net
           - "*.knative.beansnet.net"
+      knative-local-gateway:
+        selector:
+          istio: ingress
   config:
     istio:
       external-gateways: |
