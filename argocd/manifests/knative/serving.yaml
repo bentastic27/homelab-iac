@@ -24,6 +24,10 @@ spec:
         servers:
         - hosts:
           - "*knative*.svc.cluster.local"
+          port:
+            name: http
+            number: 8081
+            protocol: HTTP
   config:
     istio:
       external-gateways: |
