@@ -22,7 +22,7 @@ spec:
         selector:
           istio: ingress
         servers:
-          hosts:
+        - hosts:
           - "*knative*.svc.cluster.local"
   config:
     istio:
