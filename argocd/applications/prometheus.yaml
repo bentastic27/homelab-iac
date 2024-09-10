@@ -21,6 +21,7 @@ spec:
     automated: {}
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
     managedNamespaceMetadata:
       labels:
         istio.io/dataplane-mode: ambient
