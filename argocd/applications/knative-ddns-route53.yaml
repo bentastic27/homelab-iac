@@ -12,5 +12,5 @@ spec:
     repoURL: https://github.com/bentastic27/knative-route53-ddns.git
     path: k8s-manifests
     targetRevision: HEAD
-  syncPolicy:
-    automated: {}
+  # syncPolicy:
+  #   automated: {}
