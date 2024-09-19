@@ -14,6 +14,8 @@ spec:
       valuesObject:
         localprovisioner:
           enabled: true
+        jiva:
+          replicas: 1
   destination:
     server: "https://kubernetes.default.svc"
     namespace: openebs

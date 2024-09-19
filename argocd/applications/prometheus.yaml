@@ -14,11 +14,19 @@ spec:
       valuesObject:
         crds:
           enabled: true
+        grafana:
+          persistence:
+            enabled: true
+            type: sts
+            accessModes:
+            - ReadWriteOnce
+            size: 20Gi
+            
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
   syncPolicy:
-    # automated: {}
+    automated: {}
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
