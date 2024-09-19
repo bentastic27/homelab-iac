@@ -22,6 +22,16 @@ spec:
             - ReadWriteOnce
             size: 20Gi
             storageClassName: openebs-hostpath
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: openebs-hostpath
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
