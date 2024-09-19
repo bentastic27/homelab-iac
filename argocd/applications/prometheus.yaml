@@ -21,7 +21,7 @@ spec:
             accessModes:
             - ReadWriteOnce
             size: 20Gi
-            storageClassName: openebs-jiva-default
+            storageClassName: openebs-hostpath
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
