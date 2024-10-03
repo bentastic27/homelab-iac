@@ -12,7 +12,5 @@ spec:
     repoURL: https://github.com/rancher/system-upgrade-controller.git
     path: manifests
     targetRevision: v0.14.1
-    directory:
-      include: operator.yaml
   syncPolicy:
     automated: {}
