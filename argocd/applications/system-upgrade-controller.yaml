@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
     namespace: system-upgrade
   source:
-    repoURL: https://github.com/rancher/system-upgrade-controller.git
-    path: /
-    targetRevision: v0.14.1
+    path: argocd/manifests/system-upgrade-controller
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    targetRevision: HEAD
   syncPolicy:
     automated: {}
