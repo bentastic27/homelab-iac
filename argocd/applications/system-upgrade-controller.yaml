@@ -14,3 +14,21 @@ spec:
     targetRevision: HEAD
   syncPolicy:
     automated: {}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rke2-upgrade-plan
+  namespace: argocd
+spec:
+  project: system
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: system-upgrade
+  source:
+    path: argocd/manifests/rke2-upgrade-plan
+    repoURL: https://github.com/bentastic27/homelab-iac.git
+    targetRevision: HEAD
+  syncPolicy:
+    # probably shouldn't automate this ;)
+    # automated: {}
