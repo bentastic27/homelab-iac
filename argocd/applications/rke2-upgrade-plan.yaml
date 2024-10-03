@@ -10,7 +10,7 @@ spec:
     namespace: system-upgrade
   source:
     repoURL: https://github.com/rancher/system-upgrade-controller.git
-    path: manifests
+    path: /
     targetRevision: v0.14.1
   syncPolicy:
     automated: {}
