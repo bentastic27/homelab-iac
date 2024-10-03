@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: system-upgrade-controller
+  namespace: argocd
+spec:
+  project: system
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: system-upgrade
+  source:
+    repoURL: https://github.com/rancher/system-upgrade-controller.git
+    path: manifests
+    targetRevision: v0.14.1
+    directory:
+      include: operator.yaml
+  syncPolicy:
+    automated: {}
