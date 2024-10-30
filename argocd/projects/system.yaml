@@ -19,3 +19,4 @@ spec:
   - https://github.com/bentastic27/cpu-requests-remover-webhook.git
   - https://metallb.github.io/metallb
   - https://github.com/bentastic27/knative-route53-ddns.git
+  - https://github.com/bentastic27/k8s-secret-syncopier.git
